@@ -1,0 +1,30 @@
+trigger:
+- main
+
+pool:
+  name: classicagent
+
+steps:
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'azure-service-connection'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az account show
+
+- script: terraform version
+  displayName: Check Terraform
+
+- script: terraform init
+  displayName: Terraform Init
+
+- script: terraform validate
+  displayName: Terraform Validate
+
+- script: terraform plan
+  displayName: Terraform Plan
+
+- script: terraform apply -auto-approve
+  displayName: Terraform Apply
