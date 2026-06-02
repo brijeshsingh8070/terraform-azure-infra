@@ -8,7 +8,7 @@ steps:
 
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'azure-service-connection'
+    azureSubscription: 'brijeshsingh8070'
     scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: |
